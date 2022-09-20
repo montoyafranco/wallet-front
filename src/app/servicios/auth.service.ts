@@ -6,4 +6,16 @@ import {Auth, signInWithPopup, GoogleAuthProvider,signOut, User} from '@angular/
 export class AuthService {
 
   constructor(private auth: Auth) { }
+
+
+  getMyUser(): User | null {
+    return this.auth.currentUser;
+  }
+
+  loginWithGoogle(){
+    return signInWithPopup(this.auth, new GoogleAuthProvider()) //(signInWithEmailLink)
+  }
+  logout(){
+    return signOut(this.auth);
+  }
 }
